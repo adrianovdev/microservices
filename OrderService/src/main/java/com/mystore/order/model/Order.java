@@ -1,25 +1,26 @@
 package com.mystore.order.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Transient;
 import java.math.BigDecimal;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
+@Entity(name = "orders")
 @Getter
 @Setter
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@RequiredArgsConstructor
 public class Order {
-
-  public Order(String id, String item, Integer quantity, BigDecimal price, String userId) {
-    this.id = id;
-    this.item = item;
-    this.quantity = quantity;
-    this.price = price;
-    this.userId = userId;
-  }
-
-  private String id;
+  @Id private String id;
   private String item;
   private Integer quantity;
   private BigDecimal price;
   private String userId;
-  private User user;
+
+  @Transient private User user;
 }

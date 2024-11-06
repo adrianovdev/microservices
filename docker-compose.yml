@@ -1,0 +1,15 @@
+services:
+  postgres:
+    container_name: microservice_db
+    image: postgres:latest
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: user1
+      POSTGRES_PASSWORD: secret1
+      POSTGRES_DB: main
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
