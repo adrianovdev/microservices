@@ -16,8 +16,17 @@ The two services are:
 - Docker (optional, for containerization)
 - PostgreSQL
 
-# Getting Started ### Setting up
+# Getting Started
+
+### Setting up
 
 1. Install PostgreSQL or use `docker-compose`  to startup if you haven't already.
 2. Create two databases: `users` and `orders`.
 3. Create a user and grant necessary privileges to these databases
+
+### Running the services
+
+```
+cd /path/to/service
+./mvnw spring-boot:run
+```

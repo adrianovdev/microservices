@@ -6,9 +6,12 @@ import com.mystore.order.model.Order;
 import com.mystore.order.model.User;
 import com.mystore.order.repository.OrderRepository;
 import java.util.List;
+import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -37,5 +40,11 @@ public class OrderController {
     User user = userServiceClient.getUserById(order.getUserId());
     order.setUser(user);
     return order;
+  }
+
+  @PostMapping
+  public Order createOrder(@RequestBody Order order) {
+    order.setId(UUID.randomUUID().toString());
+    return orderRepository.save(order);
   }
 }
